@@ -49,7 +49,7 @@ foreach($argv as $key => $arg) {
 			} elseif ($arg == '-l' OR $arg == '--list') {
 				// list structure
 				echo "\n";
-				foreach (glob('databases/entry/*') as $filename) {
+				foreach (glob('./databases/entry/*') as $filename) {
 					echo " ./{$filename}". PHP_EOL;
 				}
 			} elseif ($arg == '-p' OR $arg == '--password') {
@@ -70,8 +70,8 @@ foreach($argv as $key => $arg) {
 			if(!empty($in_args)) {
                 // Initialize beech (CLI)
 				if($in_args[0] == 'init') {
-					if(!file_exists('databases/entry')) {
-						if(mkdir('databases/entry', 0777, true)) {
+					if(!file_exists('./databases/entry')) {
+						if(mkdir('./databases/entry', 0777, true)) {
 							die("\n Initiate... \n  .\\databases\ \n  .\\databases\\entry \n\n ~ source folder .\\databases\\entry \n\n It work ! initiated is successfully. \n");
 						}	
 					} else {
@@ -87,13 +87,13 @@ foreach($argv as $key => $arg) {
                     switch(explode(':', $in_args[0])[1]) {
                         case 'entry':
                             // check class is duplicate
-                            foreach (scandir('databases/entry') as $fileName) {
+                            foreach (scandir('./databases/entry') as $fileName) {
                                 if(explode('.', $fileName)[0] === $className) {
                                     die("\n Class `{$className}` is duplicate, Can't make entry. \n");
                                 }
                             }
                             // Read file content
-                            $fileContent = file_get_contents('./src/tmp/tmpEntry.php');
+                            $fileContent = file_get_contents('./tmp/tmpEntry.php');
                             // do the replacements, modifications, etc. on $fileContent
                             // This is just an example
                             $fileContent = str_replace('{{className}}', $className, $fileContent);
@@ -127,7 +127,7 @@ foreach($argv as $key => $arg) {
 
 			// Require class files
 			$entryPath = explode('/', $in_args[0]);
-			$file = 'databases/entry/'. $entryPath[0].'.php';
+			$file = './databases/entry/'. $entryPath[0].'.php';
 			if(file_exists($file)) {
 				require $file;
 			} else {
