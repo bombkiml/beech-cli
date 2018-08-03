@@ -4,7 +4,6 @@
     "keywords": ["beech", "beech-cli", "php-cli", "cli", "phpbeech", "cli-framework"],
     "license": "MIT",
     "require": {
-        "php": "^5.3.3 || ^7.0",
-        "another-vendor/package": "1.*"
+        "php": "^5.3.3 || ^7.0"
     }
 }
