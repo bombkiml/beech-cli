@@ -1,0 +1,5 @@
+<?php
+/**
+ * Beech-cli testing
+ *
+ */
