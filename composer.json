@@ -20,9 +20,8 @@
         }
     },
     "extra": {
-        "laravel": {
-            "dont-discover": [
-            ]
+        "installer-paths": {
+            "./bombkiml/": ["bombkiml/beech-cli"]
         }
     },
     "scripts": {
