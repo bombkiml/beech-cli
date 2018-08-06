@@ -17,12 +17,7 @@
     "autoload": {
         "psr-0": {
             "bombkiml/beech-cli": "src",
-	    "Applications\\": "lib"
-        }
-    },
-    "extra": {
-        "installer-paths": {
-            "./bombkiml/": ["bombkiml/beech-cli"]
+	    "": "lib"
         }
     },
     "scripts": {
