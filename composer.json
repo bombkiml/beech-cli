@@ -16,8 +16,7 @@
     },
     "autoload": {
         "psr-4": {
-            "bombkiml/beech-cli": "src",
-            "Applications\\": "lib"
+            "bombkiml/beech-cli": "src"
         }
     },
     "extra": {
