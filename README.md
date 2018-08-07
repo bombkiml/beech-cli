@@ -39,12 +39,13 @@ The Beech Command line interface (CLI) use Composer to manage it's dependencies.
       $ beech make:model {Foobar}                    Create a new model class
       $ beech make:view {foobar.view}                Create a new view file
     
-# #Development
+# #Usage
 
 You can run `` $ beech [options] [arguments] `` by solution first `` $ cd .\vendor\bombkiml\beech-cli\beech-production `` 
 or solution seccond go to `` .\vendor\bombkiml\beech-cli\lib\ `` then copy `` beech-production.bat `` to the root folder of your project and rename to `` beech.bat ``. Great!!
 
-----
+# #Development
+
 Want to contribute or join for Great Job!, You can contact to me via E-mail nattapat.jquery@gmail.com or Facebook : [bombkiml](https://www.facebook.com/bombkiml)
 
 ----
