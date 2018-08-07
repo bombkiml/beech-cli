@@ -45,8 +45,15 @@ foreach($argv as $key => $arg) {
                 die("\n Beech v1.0.0 (CLI) \n Author: bombkiml \n Built: Aug 01 2018 23:30:09 \n");
             } elseif ($arg == '-l' OR $arg == '--list') {
                 // list structure
+                if(!file_exists('.\databases')) {
+                    die("\n fatal: `databases/entry` folder not found. \n try: $ beech init \n");
+                }
+                $filenames = glob('.\databases\entry\*');
+                if(count($filenames) === 0) {
+                    die("\n The entry class file is empty, make it. \n $ beech make:entry {Foobar} \n");
+                }
                 echo "\n";
-                foreach (glob('./databases/entry/*') as $filename) {
+                foreach ($filenames as $filename) {
                     echo " ./{$filename}". PHP_EOL;
                 }
             } elseif ($arg == '-p' OR $arg == '--password') {
@@ -71,8 +78,8 @@ foreach($argv as $key => $arg) {
                 *
                 */
                 if($in_args[0] == 'init') {
-                    if(!file_exists('./databases/entry')) {
-                        if(mkdir('./databases/entry', 0777, true)) {
+                    if(!file_exists('.\databases\entry')) {
+                        if(mkdir('.\databases\entry', 0777, true)) {
                             die("\n Initiate... \n  .\\databases\ \n  .\\databases\\entry \n\n ~ source folder .\\databases\\entry \n\n It work ! initiated is successfully. \n");
                         }	
                     } else {
@@ -91,18 +98,18 @@ foreach($argv as $key => $arg) {
                 switch(explode(':', $in_args[0])[1]) {
                     case 'entry':
                         // check class is duplicate
-                        foreach (scandir('./databases/entry') as $fileName) {
+                        foreach (scandir('.\databases\entry') as $fileName) {
                             if(explode('.', $fileName)[0] === $className) {
                                 die("\n Class `{$className}` is duplicate, Can't make entry. \n");
                             }
                         }
                         // Read file content
-                        $fileContent = file_get_contents('./tmp/tmpEntry.php');
+                        $fileContent = file_get_contents('.\tmp\tmpEntry.php');
                         // do the replacements, modifications, etc. on $fileContent
                         // This is just an example
                         $fileContent = str_replace('{{className}}', $className, $fileContent);
                         // write the content to a new file
-                        if(file_put_contents("./databases/entry/{$className}.php", $fileContent)) {
+                        if(file_put_contents(".\databases\entry\{$className}.php", $fileContent)) {
                             die("\n make entry `{$className}` is successfully. \n");
                         } else {
                             die("\n make entry failed. Please try again. \n");
@@ -157,7 +164,7 @@ foreach($argv as $key => $arg) {
             
             // Require class files
             $entryPath = explode('/', $in_args[0]);
-            $file = './databases/entry/'. $entryPath[0].'.php';
+            $file = '.\databases\entry\\'. $entryPath[0].'.php';
             if(file_exists($file)) {
                 require $file;
             } else {
