@@ -7,9 +7,9 @@
 # #Installing
 The Beech Command line interface (CLI) use Composer to manage it's dependencies. So, before using Beech (CLI), make sure you have [Composer](https://getcomposer.org/) installed on your machine. Download the Beech installer using Composer.
     
-    $ composer install beech-cli
+    $ composer require bombkiml/beech-cli
 
-# #Beech docs
+# #Beech help
     
      Beech Command Line Interface (CLI)
     
@@ -31,6 +31,7 @@ The Beech Command line interface (CLI) use Composer to manage it's dependencies.
       $ beech {class}/{method}/{1}/{2}/{...}         To Using parameter(s) in the method.
     
      Make
+      $ beech make:entry {Foobar}                    Create a new entry class
       $ beech make:controller {JobController}        Create a new controller class
       $ beech make:model {Job}                       Create a new model class
       $ beech make:view {job.view}                   Create a new view file
