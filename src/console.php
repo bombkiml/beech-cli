@@ -109,7 +109,7 @@ foreach($argv as $key => $arg) {
                         // This is just an example
                         $fileContent = str_replace('{{className}}', $className, $fileContent);
                         // write the content to a new file
-                        if(file_put_contents("./databases/entry/{$className}.php", $fileContent)) {
+                        if(file_put_contents(".\databases\entry\{$className}.php", $fileContent)) {
                             die("\n make entry `{$className}` is successfully. \n");
                         } else {
                             die("\n make entry failed. Please try again. \n");
