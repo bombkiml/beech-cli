@@ -35,9 +35,9 @@ The Beech Command line interface (CLI) use Composer to manage it's dependencies.
     
      Make
       $ beech make:entry {Foobar}                    Create a new entry class
-      $ beech make:controller {JobController}        Create a new controller class
-      $ beech make:model {Job}                       Create a new model class
-      $ beech make:view {job.view}                   Create a new view file
+      $ beech make:controller {FoobarController}     Create a new controller class
+      $ beech make:model {Foobar}                    Create a new model class
+      $ beech make:view {foobar.view}                Create a new view file
     
 
 # #Development
