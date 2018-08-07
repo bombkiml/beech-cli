@@ -41,8 +41,9 @@ The Beech Command line interface (CLI) use Composer to manage it's dependencies.
     
 # #Development
 
-You can run `` $ beech [options] [arguments] `` by `` $ cd .\vendor\bombkiml\beech-cli\beech-production `` or 
-copy `` lib/beech-production.bat `` to root folder
+You can run `` $ beech [options] [arguments] `` by solution first `` $ cd .\vendor\bombkiml\beech-cli\beech-production `` 
+or solution seccond go to `` .\vendor\bombkiml\beech-cli\lib\ `` then copy `` beech-production.bat `` to the root folder of your project and rename to `` beech.bat ``. Great!!
+
 ----
 Want to contribute or join for Great Job!, You can contact to me via E-mail nattapat.jquery@gmail.com or Facebook : [bombkiml](https://www.facebook.com/bombkiml)
 
