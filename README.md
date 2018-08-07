@@ -2,7 +2,7 @@
 ###### [(by bömb)](https://www.facebook.com/bombkiml)
 
 ## #Support By
-[![N|Solid](https://image.ibb.co/kv8eM8/php_Beech_LTS2.png)](https://github.com/bombkiml/phpbeech)
+[![N|Solid](https://image.ibb.co/gfbtQe/beech_LTSx1.png)](https://github.com/bombkiml/phpbeech)
 
 # #Installing
 The Beech Command line interface (CLI) use Composer to manage it's dependencies. So, before using Beech (CLI), make sure you have [Composer](https://getcomposer.org/) installed on your machine. Download the Beech installer using Composer.
