@@ -40,6 +40,8 @@ The Beech Command line interface (CLI) use Composer to manage it's dependencies.
       $ beech make:view {foobar.view}                Create a new view file
     
 # #Development
+----
+You can run `` $ beech [options] [arguments] `` by copy `` lib/beech-production.bat `` to root folder or 
 Want to contribute or join for Great Job!, You can contact to me via E-mail nattapat.jquery@gmail.com or Facebook : [bombkiml](https://www.facebook.com/bombkiml)
 
 ----
