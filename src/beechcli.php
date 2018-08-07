@@ -14,7 +14,7 @@ if (!php_sapi_name() == 'cli' OR !empty($_SERVER['REMOTE_ADDR'])) {
 }
 
 function died() {
-    $helpFile = './help.txt';
+    $helpFile = __DIR__.'.\help.txt';
     $handle = fopen($helpFile, 'r') or die("\n Cannot open help file: {$helpFile} \n");
     $text = fread($handle, fileSize($helpFile));
     fclose($handle);
