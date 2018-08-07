@@ -40,7 +40,7 @@ The Beech Command line interface (CLI) use Composer to manage it's dependencies.
       $ beech make:view {foobar.view}                Create a new view file
     
 # #Development
-Want to contribute or join for Great Job!. You can contact to me via E-mail nattapat.jquery@gmail.com or Facebook : [bombkiml](https://www.facebook.com/bombkiml)
+Want to contribute or join for Great Job!, You can contact to me via E-mail nattapat.jquery@gmail.com or Facebook : [bombkiml](https://www.facebook.com/bombkiml)
 
 ----
 # #License
