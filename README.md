@@ -22,8 +22,10 @@ The Beech Command line interface (CLI) use Composer to manage it's dependencies.
       -l, --list                                     Display all file in `entry` directory
     
      The following commands are available:
+     
      PHP development server
       $ beech serve                                  PHP local server default start port 8000 custom by -p, --port
+      
      Initialize
       $ beech init                                   Initialize for usage `Beech`
     
