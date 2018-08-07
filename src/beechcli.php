@@ -14,15 +14,11 @@ if (!php_sapi_name() == 'cli' OR !empty($_SERVER['REMOTE_ADDR'])) {
 }
 
 function died() {
-    die("\n Beech Command Line Interface (CLI) 
-        \n Usage: \n  command [options]
-        \n Options: \n  -?|-h, --help \t\t\t\t Display this help message \n  -v, --version \t\t\t\t Display this application version \n  -l, --list \t\t\t\t\t Display all file in `entry` directory
-        \n The following commands are available:
-        \n Initialize \n  $ beech init \t\t\t\t\t Initialize for usage `Beech` 
-        \n Call entry class \n  $ beech {class}/{method} \t\t\t To Call class and method. \n  $ beech {class}/{method}/{1}/{2}/{...} \t To Using parameter(s) in the method.
-        \n Make \n  $ beech make:entry {Foobar} \t\t\t Create a new entry class \n  $ beech make:controller {FoobarController} \t Create a new controller class \n  $ beech make:model {Foobar} \t\t\t Create a new model class \n  $ beech make:view {foobar.view} \t\t Create a new view file 
-        \n
-        ");
+    $helpFile = './help.txt';
+    $handle = fopen($helpFile, 'r') or die("\n Cannot open help file: {$helpFile} \n");
+    $text = fread($handle, fileSize($helpFile));
+    fclose($handle);
+    die($text);
 }
 
 #print_r($argv);exit;
