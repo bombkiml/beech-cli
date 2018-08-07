@@ -14,7 +14,7 @@ The Beech Command line interface (CLI) use Composer to manage it's dependencies.
      Beech Command Line Interface (CLI)
     
      Usage:
-      command [options] [arguments]
+      $ beech [command] [options] [arguments]
     
      Options:
       -?|-h, --help                                  Display this help message
@@ -41,15 +41,15 @@ The Beech Command line interface (CLI) use Composer to manage it's dependencies.
     
 # #Usage
 
-First solution : EZ usage beech-cli by
+First solution : very easy for usage beech-cli by
 
-      $ cd .\vendor\bombkiml\beech-cli\beech-production command [options] <arguments>  
+      $ cd .\vendor\bombkiml\beech-cli\beech-production [command] [options] [arguments]
         
 or 
 
 Second solution : beautiful usage beech-cli by go to `` .\vendor\bombkiml\beech-cli\lib\ `` then copy `` beech-production.bat `` to the root folder of your project and rename to `` beech.bat `` 
 
-        $ beech [commnad] [options] <arguments>
+        $ beech [commnad] [options] [arguments]
     
 Great!!
 
