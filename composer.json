@@ -16,7 +16,7 @@
     },
     "autoload": {
         "files": [
-            "src/beechcli.php"
+            "src/console.php"
         ],
         "psr-0": {
             "bombkiml/beech-cli": "src"
