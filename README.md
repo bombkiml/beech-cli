@@ -26,20 +26,19 @@ The Beech Command line interface (CLI) use Composer to manage it's dependencies.
      PHP development server
       $ beech serve                                  PHP local server default start port 8000 custom by -p, --port
       
-     Initialize
+     Initialize for usage `entry`
       $ beech init                                   Initialize for usage `Beech`
     
      Call entry class
       $ beech {class}/{method}                       To Call class and method.
       $ beech {class}/{method}/{1}/{2}/{...}         To Using parameter(s) in the method.
     
-     Make
+     Beech Make (MVC)
       $ beech make:entry {Foobar}                    Create a new entry class
       $ beech make:controller {FoobarController}     Create a new controller class
       $ beech make:model {Foobar}                    Create a new model class
       $ beech make:view {foobar.view}                Create a new view file
     
-
 # #Development
 Want to contribute or join for Great Job!. You can contact to me via E-mail nattapat.jquery@gmail.com or Facebook : [bombkiml](https://www.facebook.com/bombkiml)
 
