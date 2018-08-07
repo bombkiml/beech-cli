@@ -2,3 +2,4 @@
 databases/
 composer.lock
 beech.bat
+config/
