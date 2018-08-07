@@ -68,7 +68,10 @@ foreach($argv as $key => $arg) {
             #print_r($arg);exit;
             
 			if(!empty($in_args)) {
-                // Initialize beech (CLI)
+                /**
+				 * Initialize beech (CLI)
+				 *
+				 */
 				if($in_args[0] == 'init') {
 					if(!file_exists('./databases/entry')) {
 						if(mkdir('./databases/entry', 0777, true)) {
@@ -78,7 +81,10 @@ foreach($argv as $key => $arg) {
 						die("\n The Beech (CLI) is initiated already. \n  ~ source folder .\\databases\\entry \n");
                     }
                     
-                // Make something
+                /**
+				 * Make something
+				 *
+				 */
 				} elseif(preg_match("/\bmake:/", $in_args[0])) {
                     $className = @$argv[2];
                     if(!$className) {
@@ -121,7 +127,37 @@ foreach($argv as $key => $arg) {
                         break;
                     }
                     die();
-                }
+				
+				/**
+				 * PHP development server
+				 *
+				 */
+                } elseif($in_args[0] == "serve") {
+					// Set default port is 8000
+					$port = 8000;
+					if(@$argv[2]) {
+						if (strcmp(substr(@$argv[2], 0, 1), '-') == 0) {
+							if ($argv[2] == '-p' OR $argv[2] == '--port') {
+								if(!@$argv[3]) {
+									die("\n Please specify port your server. \n");
+								} else {
+									if(is_numeric($argv[3])) {
+										$port = ($argv[3])?$argv[3]:$port;
+									} else {
+										die("\n Please specify port is numeric. \n");
+									}
+								}
+							} else {
+								die("\n Unknown `{$argv[2]}` options, make sure specify option word. \n");
+							}
+						} else {
+							die("\n Unknown `{$argv[2]}` options, make sure specify option word. \n");
+						}
+					}
+					// Start php server
+					echo("Beech development server started: <http://localhost:{$port}> \n");
+					shell_exec("php -S localhost:{$port}");
+				}
             }
             
 
@@ -168,9 +204,3 @@ foreach($argv as $key => $arg) {
 		}
 	endif;
 }
-
-
-
-
-
-
