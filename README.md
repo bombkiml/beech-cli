@@ -45,13 +45,13 @@ The Beech Command line interface (CLI) use Composer to manage it's dependencies.
     
 # #Usage
 
-First solution : very easy for usage beech-cli by
+First choice : very easy for usage beech-cli by
 
       $ cd .\vendor\bombkiml\beech-cli\beech-production [command] [options] [arguments]
         
 or 
 
-Second solution : beautiful usage beech-cli by go to `` .\vendor\bombkiml\beech-cli\lib\ `` then copy `` beech-production.bat `` to the root folder of your project and rename to `` beech.bat `` 
+Second choice : beautiful usage beech-cli by go to `` .\vendor\bombkiml\beech-cli\lib\ `` then copy `` beech-production.bat `` to the root folder of your project and rename to `` beech.bat `` 
 
         $ beech [commnad] [options] [arguments]
     
