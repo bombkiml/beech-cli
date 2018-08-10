@@ -6,7 +6,7 @@
 
 ### # Environment Requirements
     
-    PHP >= 7.1.11
+    PHP >= ^7.1
 
 ### # Installing
 The Beech Command line interface (CLI) use Composer to manage it's dependencies. So, before using Beech (CLI), make sure you have [Composer](https://getcomposer.org/) installed on your machine. Download the Beech installer using Composer.
@@ -15,14 +15,15 @@ The Beech Command line interface (CLI) use Composer to manage it's dependencies.
 
 #
 ### # Usage
-very easy for usage beech-cli by
-**First choice:** 
+It's very very easy for usage, You may use the beech-cli by 2 way like this:
+
+**First choice:** point the beech-cli in ``.\vendor``
 
       $ .\vendor\bombkiml\beech-cli\beech [command] [options] [arguments]
         
 or 
 
-**Second choice:** beautiful usage beech-cli by go to `` .\vendor\bombkiml\beech-cli\lib\ `` then copy `` beech-production.bat `` to the root folder of your project and rename to `` beech.bat `` 
+**Second choice:** beautiful usage beech-cli by go to `` .\vendor\bombkiml\beech-cli `` then copy `` beech `` file to the root folder of your project. 
 
         $ beech [commnad] [options] [arguments]
     
