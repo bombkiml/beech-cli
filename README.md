@@ -8,6 +8,7 @@
     
     PHP >= ^7.1
 
+#
 ### # Installing
 The Beech Command line interface (CLI) use Composer to manage it's dependencies. So, before using Beech (CLI), make sure you have [Composer](https://getcomposer.org/) installed on your machine. Download the Beech installer using Composer.
     
