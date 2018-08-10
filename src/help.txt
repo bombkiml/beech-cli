@@ -24,7 +24,7 @@
  
  The following commands are available for PHP Beech framework (LTS):
  
- Beech make (MVC)
+ Beech make (PHP Beech framework supported)
   $ beech make:controller {FoobarController}     Create a new controller class
   $ beech make:model {Foobar}                    Create a new model class
   $ beech make:view {foobar.view}                Create a new view file
