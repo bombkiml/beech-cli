@@ -13,7 +13,7 @@
 
 #
 ### # Installing
-The Beech Command line interface (CLI) use Composer to manage it's dependencies. So, before using Beech (CLI), make sure you have [Composer](https://getcomposer.org/) installed on your machine.
+The Beech command line interface (CLI) use Composer to manage it's dependencies. So, before using Beech (CLI), make sure you have [Composer](https://getcomposer.org/) installed on your machine.
     
     $ composer require bombkiml/beech-cli
 
@@ -35,7 +35,7 @@ Great!!
 #
 ### # Beech help
      
-     Beech Command Line Interface (CLI)
+     Beech command line interface (CLI)
 
      Usage:
       $ beech [command] [options] [arguments]
@@ -78,4 +78,4 @@ Want to contribute or join for Great Job!, You can contact to me via
   - Facebook: [https://www.facebook.com/bombkiml](https://www.facebook.com/bombkiml)
 #
 ### # License
-The Beech Command line interface (CLI) is open-sourced software licensed under the [MIT license.](https://opensource.org/licenses/MIT)
+The Beech command line interface (CLI) is open-sourced software licensed under the [MIT license.](https://opensource.org/licenses/MIT)
