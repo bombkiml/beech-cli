@@ -1,4 +1,4 @@
-# Beech Command line interface (CLI)
+# Beech command line interface (CLI)
 ###### [(by bömbkiml)](https://www.facebook.com/bombkiml)
 
 [![N|Solid](https://image.ibb.co/cyCpFe/beechcli_Plus_Beechx1.png)](https://github.com/bombkiml/beech-cli)
