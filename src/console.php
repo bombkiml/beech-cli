@@ -418,4 +418,4 @@ class Console extends Exception {
 }
 
 // Engine start
-new Console($argv);
+new Console(($argv)?$argv:$_SERVER['argv']);
