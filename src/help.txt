@@ -1,5 +1,5 @@
  
- Beech Command Line Interface (CLI)
+ Beech command line interface (CLI)
 
  Usage:
   $ beech [command] [options] [arguments]
@@ -10,12 +10,13 @@
   -l, --list                                     Display all file in `entry` directory
  
  PHP development server
-  $ beech serve                                  PHP local server default start port 8000 custom by -p, --port   
+  $ beech serve                                  PHP local development server 
+                                                 start port 8000 custom by -p, --port   
   
  The following commands are available for entry class:
  
  Initialize for usage `entry`
-  $ beech init                                   Initialize for usage `Beech`
+  $ beech init                                   Initialize for usage the `entry`
  Call entry class
   $ beech {class}/{method}                       To Call class and method.
   $ beech {class}/{method}/{1}/{2}/{...}         To Using parameter(s) in the method.
@@ -24,7 +25,11 @@
  
  The following commands are available for PHP Beech framework (LTS):
  
- Beech make (MVC)
+ Beech make (PHP Beech framework supported)
   $ beech make:controller {FoobarController}     Create a new controller class
   $ beech make:model {Foobar}                    Create a new model class
-  $ beech make:view {foobar.view}                Create a new view file
+  $ beech make:view {foobar.view}                Create a new view file default blank view
+                                                 you can choices view with arguments --html
+                                                 for basic HTML and --blog for basic blog
+
+  * Tips: You may use the make with arguments -a, --all for generater all modules
