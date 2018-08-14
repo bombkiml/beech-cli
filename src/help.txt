@@ -1,5 +1,5 @@
  
- Beech Command Line Interface (CLI)
+ Beech command line interface (CLI)
 
  Usage:
   $ beech [command] [options] [arguments]
