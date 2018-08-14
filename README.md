@@ -53,9 +53,11 @@ Great!!
 
      Initialize for usage `entry`
       $ beech init                                   Initialize for usage the `entry`
+      
      Call entry class
       $ beech {class}/{method}                       To Call class and method.
       $ beech {class}/{method}/{1}/{2}/{...}         To Using parameter(s) in the method.
+      
      Beech make (entry)
       $ beech make:entry {Foobar}                    Create a new entry class
 
