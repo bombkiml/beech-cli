@@ -1,4 +1,4 @@
-# #PHP Beech Command line interface (CLI)
+# Beech Command line interface (CLI)
 ###### [(by bömbkiml)](https://www.facebook.com/bombkiml)
 
 [![N|Solid](https://image.ibb.co/cyCpFe/beechcli_Plus_Beechx1.png)](https://github.com/bombkiml/beech-cli)
@@ -68,11 +68,14 @@ Great!!
                                                      you can choices view with arguments --html
                                                      for basic HTML and --blog for basic blog
 
-      * Tip: You may use the make with arguments -a, --all for generater all modules
+      * Tips: You may use the make with arguments -a, --all for generater all modules
 
 #
 ### #Development
-Want to contribute or join for Great Job!, You can contact to me via E-mail nattapat.jquery@gmail.com or Facebook : [bombkiml](https://www.facebook.com/bombkiml)
+Want to contribute or join for Great Job!, You can contact to me via
+  - GitHub: [bombkiml/beech-cli - issues](https://github.com/bombkiml/beech-cli/issues)
+  - E-mail: nattapat.jquery@gmail.com 
+  - Facebook: [https://www.facebook.com/bombkiml](https://www.facebook.com/bombkiml)
 #
 ### # License
-PHP Beech Command line interface (CLI) is open-sourced software licensed under the [MIT license.](https://opensource.org/licenses/MIT)
+The Beech Command line interface (CLI) is open-sourced software licensed under the [MIT license.](https://opensource.org/licenses/MIT)
