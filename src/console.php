@@ -15,13 +15,28 @@ if (!php_sapi_name() == 'cli' OR !empty($_SERVER['REMOTE_ADDR'])) {
 
 class Console extends Exception {
 
-    private $argv;
+    /**
+     * Properties
+     * 
+     * @param Array $argv
+     * @param Text $beech
+     * @param Text $command
+     * @param Text $option
+     * @param Text $argument
+     * @param Text $specail
+     * 
+     */
+    private static $argv = null;
+    private static $beech = null;
+    private static $command = null;
+    private static $option = null;
+    private static $argument = null;
+    private static $special = null;
 
     public function __construct($argv) {
-        //print_r($argv);
-        $this->argv = $argv;        
         try {            
-            if(!@$argv[1]) {
+            self::properties($argv);
+            if(!self::$command) {
                 self::help();
             } else {
                 self::init();
@@ -32,13 +47,13 @@ class Console extends Exception {
     }
 
     private function init() {
-        foreach($this->argv as $key => $arg) {
+        foreach(self::$argv as $key => $arg) {
             if($key != 0) :
                 /**
                 * Arguments case
                 * 
                 */        
-                if (strcmp(substr($arg, 0, 1), '-') == 0) {        
+                if (strcmp(substr($arg, 0, 1), '-') == 0) {
                     self::arguments($arg);
                     
                 /**
@@ -59,7 +74,7 @@ class Console extends Exception {
                         *
                         */
                         } elseif(preg_match("/\bmake:/", $arg)) {
-                            self::make($arg, @$this->argv[2]);
+                            self::make($arg, self::$option);
                             #die();
                             
                         /**
@@ -69,72 +84,12 @@ class Console extends Exception {
                         *
                         */
                         } elseif($arg == "serve") {
-                            // Set default port is 8000
-                            $port = 8000;
-                            if(@$this->argv[2]) {
-                                if (strcmp(substr(@$this->argv[2], 0, 1), '-') == 0) {
-                                    if ($this->argv[2] == '-p' OR $this->argv[2] == '--port') {
-                                        if(!@$this->argv[3]) {
-                                            die("\n Please specify port your server. \n");
-                                        } else {
-                                            if(is_numeric($this->argv[3])) {
-                                                $port = ($this->argv[3])?$this->argv[3]:$port;
-                                            } else {
-                                                die("\n Please specify port is numeric. \n");
-                                            }
-                                        }
-                                    } else {
-                                        die("\n Unknown `{$this->argv[2]}` options, make sure specify option word. \n");
-                                    }
-                                } else {
-                                    die("\n Unknown `{$this->argv[2]}` options, make sure specify option word. \n");
-                                }
-                            }
-                            // Start php server
-                            echo("Beech development server started: <http://localhost:{$port}> \n");
-                            shell_exec("php -S localhost:{$port} public/index.php");
+                            self::devServer();
+                        } else {
+                            self::callEntry($arg);
                         }
-                    }
-                    
-                    // Require class files
-                    $entryPath = explode('/', $arg);
-                    $file = '.\databases\entry\\'. $entryPath[0].'.php';
-                    if(file_exists($file)) {
-                        require $file;
                     } else {
-                        die("\n The Class `{$entryPath[0]}()` doesn't exists, Do you have file in ./databases/entry/{$entryPath[0]}.php ? \n");
-                    }
-        
-                    // Using case by case
-                    switch(count($entryPath)) {
-                        // call class only
-                        case 1:
-                            die("\n It working. \n");
-                        break;
-                        // call class/method
-                        case 2:
-                            $obj = new $entryPath[0]();
-                            method_exists($obj, $entryPath[1]) ? $obj->{$entryPath[1]}() : die("\n The Medthod `{$entryPath[1]}()` doesn't exists, Do you have `{$entryPath[1]}()` in class {$entryPath[0]}() ? \n");
-                        break;
-                            // call class/method/param1
-                        case 3: 
-                            $obj = new $entryPath[0]();
-                            method_exists($obj, $entryPath[1]) ? $obj->{$entryPath[1]}($entryPath[2]) : die("\n The Medthod `{$entryPath[1]}(param1)` doesn't exists. \n");
-                        break;
-                        // call class/method/param1/param2
-                        case 4: 
-                            $obj = new $entryPath[0]();
-                            method_exists($obj, $entryPath[1]) ? $obj->{$entryPath[1]}($entryPath[2], $entryPath[3]) : die("\n The Medthod `{$entryPath[1]}(param1, param2)` doesn't exists. \n");
-                        break;
-                        // call class/method/param1/param1/param2/param3
-                        case 5: 
-                            $obj = new $entryPath[0]();
-                            method_exists($obj, $entryPath[1]) ? $obj->{$entryPath[1]}($entryPath[2], $entryPath[3], $entryPath[4]) : die("\n The Medthod `{$entryPath[1]}(param1, param2, param3)` doesn't exists. \n");
-                        break;
-                        // default not supported !
-                        default:
-                            die("\n Stopped !! \n The Beech (CLI) not supported. \n");
-                        break;
+
                     }
                 }
             endif;
@@ -144,11 +99,11 @@ class Console extends Exception {
 
     private function arguments($arg) {
         // Beech-cli version 
-        if ($arg == '-v' OR $arg == '--version') {
+        if ($arg == '-v' || $arg == '--version') {
             die("\n Beech v2.0 (cli) \n Author: bombkiml \n Built: Aug 10 2018 21:19:09 \n");
         
         // List structure
-        } elseif ($arg == '-l' OR $arg == '--list') {
+        } elseif ($arg == '-l' || $arg == '--list') {
             if(!file_exists('.\databases\entry')) {
                 die("\n fatal: The `.\databases\\entry` folder not found, please initiate entry by `init` command. \n");
             }
@@ -162,7 +117,7 @@ class Console extends Exception {
             }
 
         // beech-cli help
-        } elseif ($arg == '-?' OR $arg == '-h' OR $arg == '--help') {
+        } elseif ($arg == '-?' || $arg == '-h' || $arg == '--help') {
             self::help();
 
         // not everthing
@@ -242,8 +197,10 @@ class Console extends Exception {
                     $className = $subfolder ."\\". $endClassName;
                 }
                 // check class is duplicate
-                foreach (scandir(".\\modules\\controllers") as $fileName) {
-                    if(explode('.', $fileName)[0] === $className) {
+                foreach (scandir(".\\modules\\controllers\\". @$subfolder) as $fileName) {
+                    $file = explode('.php', $fileName);
+                    $file = trim(@$subfolder ."\\". current($file), "\\");
+                    if($file === $className) {
                         die("\n The class `{$className}` is duplicate. \n");
                     }
                 }
@@ -251,7 +208,8 @@ class Console extends Exception {
                 $fileContent = file_get_contents(__DIR__.'./tmpController.php');
                 // do the replacements, modifications, etc. on $fileContent
                 // This is just an example
-                $fileContent = str_replace('{{className}}', $className, $fileContent);
+                $classNameReplace = explode("\\", $className);
+                $fileContent = str_replace('{{className}}', end($classNameReplace), $fileContent);
                 // write the content to a new file
                 if(file_put_contents(".\\modules\\controllers\\{$className}.php", $fileContent)) {
                     die("\n make the controller `{$className}` is successfully. \n");
@@ -287,8 +245,10 @@ class Console extends Exception {
                     $className = $subfolder ."\\". $endClassName;
                 }
                 // check class is duplicate
-                foreach (scandir(".\\modules\\models") as $fileName) {
-                    if(explode('.', $fileName)[0] === $className) {
+                foreach (scandir(".\\modules\\models\\". @$subfolder) as $fileName) {
+                    $file = explode('.php', $fileName);
+                    $file = trim(@$subfolder ."\\". current($file), "\\");
+                    if($file === $className) {
                         die("\n The class `{$className}` is duplicate. \n");
                     }
                 }
@@ -296,7 +256,8 @@ class Console extends Exception {
                 $fileContent = file_get_contents(__DIR__.'./tmpModel.php');
                 // do the replacements, modifications, etc. on $fileContent
                 // This is just an example
-                $fileContent = str_replace('{{className}}', $className, $fileContent);
+                $classNameReplace = explode("\\", $className);
+                $fileContent = str_replace('{{className}}', end($classNameReplace), $fileContent);
                 // write the content to a new file
                 if(file_put_contents(".\\modules\\models\\{$className}.php", $fileContent)) {
                     die("\n make the model `{$className}` is successfully. \n");
@@ -309,7 +270,58 @@ class Console extends Exception {
              * 
              */
             case 'view':
-                die("\n make view `{$className}` is successfully. \n");
+                // check view store exists.
+                if(!file_exists(".\\views")) {
+                    die("\n fatal: The `.\\views` folder not found. \n");
+                }
+                // check specify view name
+                if(!$className) {
+                    die("\n Please specify view name. \n");
+                }
+                // check include subfolder
+                $masterName = explode('/', $className);
+                if(count($masterName) > 1) {
+                    $endClassName = end($masterName);
+                    array_pop($masterName);
+                    $subfolder = implode('\\', $masterName);
+                    if(!file_exists(".\\views\\{$subfolder}")) {
+                        if(!mkdir(".\\views\\{$subfolder}", 0777, true)) {
+                            die("\n fatal: something error please try again. \n");
+                        }
+                    }
+                    // next new className
+                    $className = $subfolder ."\\". $endClassName;
+                }
+                // include .view
+                $className = $className.'.view';
+                // check view is duplicate
+                foreach (scandir(".\\views\\". @$subfolder) as $fileName) {
+                    $file = explode('.php', $fileName);
+                    $file = trim(@$subfolder ."\\". current($file), "\\");
+                    if($file === $className) {
+                        die("\n The view `{$className}` is duplicate. \n");
+                    }
+                }
+                // argument passer
+                if(self::$argument == '--blog') {
+                    // Read file content (bootstrap)
+                    $fileContent = file_get_contents(__DIR__.'./tmpViewBootstrap.php');
+                } elseif(self::$argument == '--html') {
+                    // Read file content
+                    $fileContent = file_get_contents(__DIR__.'./tmpViewHtml.php');
+                } else {
+                    // Read file content
+                    $fileContent = file_get_contents(__DIR__.'./tmpViewBlank.php');
+                }
+                // do the replacements, modifications, etc. on $fileContent
+                // This is just an example
+                $fileContent = str_replace('{{className}}', $className, $fileContent);
+                // write the content to a new file
+                if(file_put_contents(".\\views\\{$className}.php", $fileContent)) {
+                    die("\n make the view `{$className}` is successfully. \n");
+                } else {
+                    die("\n make the view failed. Please try again. \n");
+                }
             break;
             default:
                 die("\n command `make:{$make}` is incorrect. \n\n The most similar command is: \n  make:entry \n  make:controller \n  make:model \n  make:view \n");
@@ -317,6 +329,76 @@ class Console extends Exception {
         }
     }
 
+    private function devServer() {
+        // Set default port is 8000
+        $port = 8000;
+        if(@self::$option) {
+            if (strcmp(substr(@self::$option, 0, 1), '-') == 0) {
+                if (self::$option == '-p' OR self::$option == '--port') {
+                    if(!@self::$argument) {
+                        die("\n Please specify port your server. \n");
+                    } else {
+                        if(is_numeric(self::$argument)) {
+                            $port = (self::$argument)?self::$argument:$port;
+                        } else {
+                            die("\n Please specify port is numeric. \n");
+                        }
+                    }
+                } else {
+                    die("\n Unknown `{self::$option}` options, make sure specify option word. \n");
+                }
+            } else {
+                die("\n Unknown `{self::$option}` options, make sure specify option word. \n");
+            }
+        }
+        // Start php server
+        echo("Beech development server started: <http://localhost:{$port}> \n");
+        shell_exec("php -S localhost:{$port} public/index.php");
+    }
+
+    private function callEntry($arg) {
+        // Require class files
+        $entryPath = explode('/', $arg);
+        $file = ".\\databases\\entry\\{$entryPath[0]}.php";
+        if(file_exists($file)) {
+            require $file;
+        } else {
+            die("\n The Class `{$entryPath[0]}()` doesn't exists, Do you have file in .\\databases\\entry\\{$entryPath[0]}.php ? \n");
+        }
+
+        // Using case by case
+        switch(count($entryPath)) {
+            // call class only
+            case 1:
+                die("\n It working. \n");
+            break;
+            // call class/method
+            case 2:
+                $obj = new $entryPath[0]();
+                method_exists($obj, $entryPath[1]) ? $obj->{$entryPath[1]}() : die("\n The Medthod `{$entryPath[1]}()` doesn't exists, Do you have `{$entryPath[1]}()` in class {$entryPath[0]}() ? \n");
+            break;
+                // call class/method/param1
+            case 3: 
+                $obj = new $entryPath[0]();
+                method_exists($obj, $entryPath[1]) ? $obj->{$entryPath[1]}($entryPath[2]) : die("\n The Medthod `{$entryPath[1]}(param1)` doesn't exists. \n");
+            break;
+            // call class/method/param1/param2
+            case 4: 
+                $obj = new $entryPath[0]();
+                method_exists($obj, $entryPath[1]) ? $obj->{$entryPath[1]}($entryPath[2], $entryPath[3]) : die("\n The Medthod `{$entryPath[1]}(param1, param2)` doesn't exists. \n");
+            break;
+            // call class/method/param1/param1/param2/param3
+            case 5: 
+                $obj = new $entryPath[0]();
+                method_exists($obj, $entryPath[1]) ? $obj->{$entryPath[1]}($entryPath[2], $entryPath[3], $entryPath[4]) : die("\n The Medthod `{$entryPath[1]}(param1, param2, param3)` doesn't exists. \n");
+            break;
+            // default not supported !
+            default:
+                die("\n Stopped !! \n The Beech (CLI) not supported. \n");
+            break;
+        }
+    }
+    
     private function help() {
         $helpFile = __DIR__.'.\help.txt';
         $handle = fopen($helpFile, 'r') or die("\n Cannot open help file: {$helpFile} \n");
@@ -325,18 +407,14 @@ class Console extends Exception {
         die($text);
     }
 
-
-
-
-
-
-
-
-
-
-
-
-
+    private function properties($argv) {
+        self::$argv = @$argv;
+        self::$beech = @$argv[0];
+        self::$command = @$argv[1];
+        self::$option = @$argv[2];
+        self::$argument = @$argv[3];
+        self::$special = @$argv[4];
+    }
 }
 
 // Engine start

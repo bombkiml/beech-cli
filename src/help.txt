@@ -10,7 +10,8 @@
   -l, --list                                     Display all file in `entry` directory
  
  PHP development server
-  $ beech serve                                  PHP local server default start port 8000 custom by -p, --port   
+  $ beech serve                                  PHP local development server 
+                                                 start port 8000 custom by -p, --port   
   
  The following commands are available for entry class:
  
@@ -27,4 +28,8 @@
  Beech make (PHP Beech framework supported)
   $ beech make:controller {FoobarController}     Create a new controller class
   $ beech make:model {Foobar}                    Create a new model class
-  $ beech make:view {foobar.view}                Create a new view file
+  $ beech make:view {foobar.view}                Create a new view file default blank view
+                                                 you can choices view with arguments --html
+                                                 for basic HTML and --blog for basic blog
+
+  * Tip: You may use the make with arguments -a, --all for generater all modules

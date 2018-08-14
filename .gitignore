@@ -1,6 +1,7 @@
 .git/
 databases/
 modules/
+views/
 composer.lock
 beech.bat
 config/
