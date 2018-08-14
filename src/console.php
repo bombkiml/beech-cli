@@ -1,9 +1,9 @@
 <?php
 /**
- * Project : Beech Command Line Interface (CLI)
+ * Project : Beech command line interface (CLI)
  * Version : 2.0
  * Author  : bombkiml
- * Built   : Aug 10 2018 21:19:09
+ * Built   : Aug 14 2018 09:19:09
  *
  */
 
