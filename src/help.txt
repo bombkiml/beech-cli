@@ -32,4 +32,4 @@
                                                  you can choices view with arguments --html
                                                  for basic HTML and --blog for basic blog
 
-  * Tip: You may use the make with arguments -a, --all for generater all modules
+  * Tips: You may use the make with arguments -a, --all for generater all modules
