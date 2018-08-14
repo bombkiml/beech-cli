@@ -31,22 +31,23 @@ or
 Great!!
 #
 ### # Beech help
-    
+     
      Beech Command Line Interface (CLI)
-    
+
      Usage:
       $ beech [command] [options] [arguments]
-    
+
      Options:
       -?|-h, --help                                  Display this help message
       -v, --version                                  Display this application version
       -l, --list                                     Display all file in `entry` directory
-     
+
      PHP development server
-      $ beech serve                                  PHP local server default start port 8000 custom by -p, --port   
-      
+      $ beech serve                                  PHP local development server 
+                                                     start port 8000 custom by -p, --port   
+
      The following commands are available for entry class:
-     
+
      Initialize for usage `entry`
       $ beech init                                   Initialize for usage `Beech`
      Call entry class
@@ -54,13 +55,17 @@ Great!!
       $ beech {class}/{method}/{1}/{2}/{...}         To Using parameter(s) in the method.
      Beech make (entry)
       $ beech make:entry {Foobar}                    Create a new entry class
-     
+
      The following commands are available for PHP Beech framework (LTS):
-     
-     Beech make (MVC)
+
+     Beech make (PHP Beech framework supported)
       $ beech make:controller {FoobarController}     Create a new controller class
       $ beech make:model {Foobar}                    Create a new model class
-      $ beech make:view {foobar.view}                Create a new view file
+      $ beech make:view {foobar.view}                Create a new view file default blank view
+                                                     you can choices view with arguments --html
+                                                     for basic HTML and --blog for basic blog
+
+      * Tip: You may use the make with arguments -a, --all for generater all modules
 
 #
 # #Development
