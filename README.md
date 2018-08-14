@@ -23,13 +23,13 @@ It's very very easy for usage, You may use the beech-cli by 2 way like this:
 
 **First choice:** point the beech-cli in ``.\vendor``
 
-      $ .\vendor\bombkiml\beech-cli\beech [command] [options] [arguments]
+      $ php .\vendor\bombkiml\beech-cli\beech [command] [options] [arguments]
 
 or 
 
 **Second choice:** beautiful usage beech-cli by go to `` .\vendor\bombkiml\beech-cli `` then copy `` beech `` file to the root folder of your project. 
 
-        $ beech [commnad] [options] [arguments]
+        $ php beech [commnad] [options] [arguments]
 
 Great!!
 #
