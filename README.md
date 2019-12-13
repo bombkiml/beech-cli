@@ -32,6 +32,10 @@ or
         $ php beech [commnad] [options] [arguments]
 
 Great!!
+
+:grey_question: Tips : With PHP Becch framework you can using ``beech`` right now! |
+------------ |
+
 #
 ### # Beech help
      
