@@ -1,4 +1,6 @@
 # Beech command line interface (CLI)
+[![beech-api release](https://img.shields.io/github/v/release/bombkiml/beech-cli)](https://github.com/bombkiml/beech-cli/releases/)
+[![PyPI license](https://img.shields.io/pypi/l/ansicolortags.svg)](https://github.com/bombkiml/beech-api/blob/master/README.md)
 ###### [(by bömbkiml)](https://www.facebook.com/bombkiml)
 
 [![N|Solid](https://image.ibb.co/cyCpFe/beechcli_Plus_Beechx1.png)](https://github.com/bombkiml/beech-cli)
@@ -38,7 +40,6 @@ The Beech command line interface (CLI) use Composer to manage it's dependencies.
 
             ``$ php beech [commnad] [options] [arguments]``
 
-#
 
 :grey_question: Tips : With PHP Becch framework you can using ``beech`` right now! |
 ------------ |
