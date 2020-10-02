@@ -50,7 +50,7 @@ The Beech command line interface (CLI) use Composer to manage it's dependencies.
      Beech command line interface (CLI)
 
      Usage:
-      $ beech [command] [options] [arguments]
+      $ php beech [command] [options] [arguments]
 
      Options:
       -?|-h, --help                                  Display this help message
@@ -58,27 +58,27 @@ The Beech command line interface (CLI) use Composer to manage it's dependencies.
       -l, --list                                     Display all file in `entry` directory
 
      PHP development server
-      $ beech serve                                  PHP local development server 
+      $ php beech serve                                  PHP local development server 
                                                      start port 8000 custom by -p, --port   
 
      The following commands are available for entry class:
 
      Initialize for usage `entry`
-      $ beech init                                   Initialize for usage the `entry`
+      $ php beech init                                   Initialize for usage the `entry`
       
      Call entry class
-      $ beech {class}/{method}                       To Call class and method.
-      $ beech {class}/{method}/{1}/{2}/{...}         To Using parameter(s) in the method.
+      $ php beech {class}/{method}                       To Call class and method.
+      $ php beech {class}/{method}/{1}/{2}/{...}         To Using parameter(s) in the method.
       
      Beech make (entry)
-      $ beech make:entry {Foobar}                    Create a new entry class
+      $ php beech make:entry {Foobar}                    Create a new entry class
 
      The following commands are available for PHP Beech framework (LTS):
 
      Beech make (PHP Beech framework supported)
-      $ beech make:controller {FoobarController}     Create a new controller class
-      $ beech make:model {Foobar}                    Create a new model class
-      $ beech make:view {foobar.view}                Create a new view file default blank view
+      $ php beech make:controller {FoobarController}     Create a new controller class
+      $ php beech make:model {Foobar}                    Create a new model class
+      $ php beech make:view {foobar.view}                Create a new view file default blank view
                                                      you can choices view with arguments --html
                                                      for basic HTML and --blog for basic blog
 
