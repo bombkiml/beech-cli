@@ -3,6 +3,16 @@
 class {{className}} {
 
     /**
+     * Show resource in storage.
+     *
+     * @return Response
+     * 
+     */
+    public function show() {
+
+    }
+
+    /**
      * Store a newly created resource in storage.
      *
      * @param  Request  $request
@@ -14,7 +24,7 @@ class {{className}} {
     }
 
     /**
-     * Show the form for editing the specified resource.
+     * Editing the specified resource.
      *
      * @param Array $field
      * @param  Int  $id

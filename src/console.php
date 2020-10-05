@@ -1,9 +1,9 @@
 <?php
 /**
  * Project : Beech command line interface (CLI)
- * Version : 2.0
+ * Version : 2.0.2
  * Author  : bombkiml
- * Built   : Aug 14 2018 09:19:09
+ * Built   : Oct. 2, 2020 12:19:45
  *
  */
 
@@ -100,7 +100,7 @@ class Console extends Exception {
     private function arguments($arg) {
         // Beech-cli version 
         if ($arg == '-v' || $arg == '--version') {
-            die("\n Beech v2.0 (cli) \n Author: bombkiml \n Built: Aug 10 2018 21:19:09 \n");
+            die("\n Beech v2.0.2 (cli) \n Author: bombkiml \n Built: Oct. 2, 2020 12:19:45 \n");
         
         // List structure
         } elseif ($arg == '-l' || $arg == '--list') {
@@ -137,6 +137,14 @@ class Console extends Exception {
     }
 
     private function make($arg, $className = null) {
+        // check specify class name
+        $arrayClass = explode('/', $className);
+        if(count($arrayClass) > 1) {
+            if(!@end($arrayClass)) {
+                die("\n Please specify any name of `{$className}?`. \n");
+            }
+        }
+        // switch make case
         switch($make = explode(':', $arg)[1]) {
             /**
              * @make:entry
@@ -153,17 +161,17 @@ class Console extends Exception {
                 }
                 // check class is duplicate
                 foreach (scandir(".\\databases\\entry") as $fileName) {
-                    if(explode('.', $fileName)[0] === $className) {
-                        die("\n The class `{$className}` is duplicate. \n");
+                    if(explode('.', $fileName)[0] === ucfirst($className)) {
+                        die("\n The entry `{$className}` is duplicate. \n");
                     }
                 }
                 // Read file content
                 $fileContent = file_get_contents(__DIR__.'./tmpEntry.php');
                 // do the replacements, modifications, etc. on $fileContent
                 // This is just an example
-                $fileContent = str_replace('{{className}}', $className, $fileContent);
+                $fileContent = str_replace('{{className}}', ucfirst($className), $fileContent);
                 // write the content to a new file
-                if(file_put_contents(".\\databases\\entry\\{$className}.php", $fileContent)) {
+                if(file_put_contents(".\\databases\\entry\\". ucfirst($className) .".php", $fileContent)) {
                     die("\n make the entry `{$className}` is successfully. \n");
                 } else {
                     die("\n make the entry failed. Please try again. \n");
@@ -182,10 +190,15 @@ class Console extends Exception {
                 if(!$className) {
                     die("\n Please specify controller name. \n");
                 }
-                // check include subfolder
+                // explode when asign subfolder
                 $masterName = explode('/', $className);
+                $newClassName = ucfirst(end($masterName));
+                // check don't asign conroller wording
+                if(!strpos($newClassName, "Controller")) {
+                  $newClassName = $newClassName . "Controller";
+                }
+                // check include subfolder
                 if(count($masterName) > 1) {
-                    $endClassName = end($masterName);
                     array_pop($masterName);
                     $subfolder = implode('\\', $masterName);
                     if(!file_exists(".\\modules\\controllers\\{$subfolder}")) {
@@ -194,25 +207,25 @@ class Console extends Exception {
                         }
                     }
                     // next new className
-                    $className = $subfolder ."\\". $endClassName;
+                    $newClassName = $subfolder ."\\". $newClassName;
                 }
                 // check class is duplicate
                 foreach (scandir(".\\modules\\controllers\\". @$subfolder) as $fileName) {
                     $file = explode('.php', $fileName);
                     $file = trim(@$subfolder ."\\". current($file), "\\");
-                    if($file === $className) {
-                        die("\n The class `{$className}` is duplicate. \n");
+                    if($file === $newClassName) {
+                        die("\n The class `{$newClassName}` is duplicate. \n");
                     }
                 }
                 // Read file content
                 $fileContent = file_get_contents(__DIR__.'./tmpController.php');
                 // do the replacements, modifications, etc. on $fileContent
                 // This is just an example
-                $classNameReplace = explode("\\", $className);
+                $classNameReplace = explode("\\", $newClassName);
                 $fileContent = str_replace('{{className}}', end($classNameReplace), $fileContent);
                 // write the content to a new file
-                if(file_put_contents(".\\modules\\controllers\\{$className}.php", $fileContent)) {
-                    die("\n make the controller `{$className}` is successfully. \n");
+                if(file_put_contents(".\\modules\\controllers\\{$newClassName}.php", $fileContent)) {
+                    die("\n make the controller `{$newClassName}` is successfully. \n");
                 } else {
                     die("\n make the controller failed. Please try again. \n");
                 }
@@ -232,8 +245,8 @@ class Console extends Exception {
                 }
                 // check include subfolder
                 $masterName = explode('/', $className);
+                $newClassName = ucfirst(end($masterName));
                 if(count($masterName) > 1) {
-                    $endClassName = end($masterName);
                     array_pop($masterName);
                     $subfolder = implode('\\', $masterName);
                     if(!file_exists(".\\modules\\models\\{$subfolder}")) {
@@ -242,25 +255,25 @@ class Console extends Exception {
                         }
                     }
                     // next new className
-                    $className = $subfolder ."\\". $endClassName;
+                    $newClassName = $subfolder ."\\". $newClassName;
                 }
                 // check class is duplicate
                 foreach (scandir(".\\modules\\models\\". @$subfolder) as $fileName) {
                     $file = explode('.php', $fileName);
                     $file = trim(@$subfolder ."\\". current($file), "\\");
-                    if($file === $className) {
-                        die("\n The class `{$className}` is duplicate. \n");
+                    if($file === $newClassName) {
+                        die("\n The class `{$newClassName}` is duplicate. \n");
                     }
                 }
                 // Read file content
                 $fileContent = file_get_contents(__DIR__.'./tmpModel.php');
                 // do the replacements, modifications, etc. on $fileContent
                 // This is just an example
-                $classNameReplace = explode("\\", $className);
+                $classNameReplace = explode("\\", $newClassName);
                 $fileContent = str_replace('{{className}}', end($classNameReplace), $fileContent);
                 // write the content to a new file
-                if(file_put_contents(".\\modules\\models\\{$className}.php", $fileContent)) {
-                    die("\n make the model `{$className}` is successfully. \n");
+                if(file_put_contents(".\\modules\\models\\{$newClassName}.php", $fileContent)) {
+                    die("\n make the model `{$newClassName}` is successfully. \n");
                 } else {
                     die("\n make the model failed. Please try again. \n");
                 }

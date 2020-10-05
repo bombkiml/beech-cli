@@ -53,13 +53,13 @@ The Beech command line interface (CLI) use Composer to manage it's dependencies.
       $ php beech [command] [options] [arguments]
 
      Options:
-      -?|-h, --help                                  Display this help message
-      -v, --version                                  Display this application version
-      -l, --list                                     Display all file in `entry` directory
+      -?|-h, --help                                      Display this help message
+      -v, --version                                      Display this application version
+      -l, --list                                         Display all file in `entry` directory
 
      PHP development server
       $ php beech serve                                  PHP local development server 
-                                                     start port 8000 custom by -p, --port   
+                                                         start port 8000 custom by -p, --port
 
      The following commands are available for entry class:
 
@@ -79,8 +79,8 @@ The Beech command line interface (CLI) use Composer to manage it's dependencies.
       $ php beech make:controller {FoobarController}     Create a new controller class
       $ php beech make:model {Foobar}                    Create a new model class
       $ php beech make:view {foobar.view}                Create a new view file default blank view
-                                                     you can choices view with arguments --html
-                                                     for basic HTML and --blog for basic blog
+                                                           - with HTML basic tag add arguments --html
+                                                           - with HTML blog tag add arguments --blog
 
       * Tips: You may use the make with arguments -a, --all for generater all modules
 
