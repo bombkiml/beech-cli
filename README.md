@@ -3,7 +3,7 @@
 [![PyPI license](https://img.shields.io/pypi/l/ansicolortags.svg)](https://github.com/bombkiml/beech-api/blob/master/README.md)
 ###### [(by bömbkiml)](https://www.facebook.com/bombkiml)
 
-[![N|Solid](https://image.ibb.co/cyCpFe/beechcli_Plus_Beechx1.png)](https://github.com/bombkiml/beech-cli)
+[![N|Solid](https://i.ibb.co/RTVrZkq/beech-CLIx2.png)](https://github.com/bombkiml/beech-cli)
 
 ### # Support By
 [PHP Beech framework (LTS)](https://github.com/bombkiml/phpbeech)
