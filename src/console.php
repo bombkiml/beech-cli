@@ -366,7 +366,7 @@ class Console extends Exception {
         }
         // Start php server
         echo("Beech development server started: <http://localhost:{$port}> \n");
-        shell_exec("php -S localhost:{$port} public/index.php");
+        shell_exec("php -S localhost:{$port}");
     }
 
     private function callEntry($arg) {
