@@ -17,7 +17,14 @@ class {{className}} extends Model {
      * 
      */
     public function get() {
-
+      // Preparing sql statements
+      $stmt = $this->db->prepare("SELECT * FROM fruits");
+            
+      // Execute statements
+      $stmt->execute();
+      
+      // Return response rows
+      return $stmt->fetch_assoc();
     }
 
     /**
