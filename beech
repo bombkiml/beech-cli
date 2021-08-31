@@ -2,9 +2,9 @@
 <?php 
 
 if(file_exists(__DIR__.'.\vendor')) {
-    // production
-    require __DIR__.'.\vendor\autoload.php';
+  // production
+  require __DIR__.'.\vendor\autoload.php';
 } else {
-    // development
-    require __DIR__.'.\src\console.php';
+  // development
+  require __DIR__.'.\src\console.php';
 }
