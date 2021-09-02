@@ -1,9 +1,9 @@
 <?php
 /**
  * Project : Beech command line interface (CLI)
- * Version : 2.0.2
+ * Version : 2.0.4
  * Author  : bombkiml
- * Built   : Oct. 2, 2020 12:19:45
+ * Built   : Aug. 28, 2021 15:39:19
  *
  */
 
@@ -100,7 +100,7 @@ class Console extends Exception {
   private function arguments($arg) {
     // Beech-cli version 
     if ($arg == '-v' || $arg == '--version') {
-      die("\n Beech v2.0.2 (cli) \n Author: bombkiml \n Built: Oct. 2, 2020 12:19:45 \n");
+      die("\n Beech v2.0.4 (cli) \n Author: bombkiml \n Built: Aug. 28, 2021 15:39:19 \n");
     
     // List structure
     } elseif ($arg == '-l' || $arg == '--list') {
